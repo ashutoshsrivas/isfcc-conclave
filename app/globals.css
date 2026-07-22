@@ -1,0 +1,496 @@
+@import "tailwindcss";
+
+/* ============================================================
+   3rd ISFCC — "Golden Hour" design system
+   Warm cream, burnt orange & rust serif — from the official
+   creative: photography-led, academic, rounded, generous.
+   Motion language stays ceremonial: slow, orchestrated, warm.
+   ============================================================ */
+
+@theme {
+  /* surfaces */
+  --color-cream: #f8efe1;
+  --color-cream-deep: #f2e6d2;
+  --color-card: #fffdf8;
+  --color-line: #e6d7bf;
+
+  /* inks */
+  --color-rust: #9c4613;
+  --color-rust-deep: #7a340c;
+  --color-orange: #c75e12;
+  --color-orange-bright: #e07425;
+  --color-brown: #3d2c1f;
+  --color-brown-soft: #71604f;
+
+  /* accents */
+  --color-sky: #1f7fcb;
+  --color-navy: #2e2c7a;
+  --color-geu-red: #c8102e;
+  --color-amber: #d99a2b;
+
+  /* dark grounding (footer) */
+  --color-espresso: #2b1a0e;
+  --color-espresso-soft: #c9b9a6;
+
+  --font-display: var(--font-prata);
+  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-outfit);
+
+  --ease-ceremony: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-drift: cubic-bezier(0.45, 0, 0.15, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ---- Typographic helpers ---- */
+.mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.005em;
+}
+
+/* Rust→orange ink for the grandest headings */
+.ink-rust {
+  background: linear-gradient(120deg, var(--color-rust-deep), var(--color-rust) 55%, var(--color-orange));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- Warm hairline ---- */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-amber) 12%,
+    var(--color-amber) 88%,
+    transparent
+  );
+}
+
+/* A hairline that draws itself when revealed on scroll */
+.rule-draw {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.1s var(--ease-ceremony) 0.15s;
+}
+.in .rule-draw,
+.rule-draw.in {
+  transform: scaleX(1);
+}
+
+/* A hairline that draws itself on page load (hero) */
+.rule-grow {
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: rule-grow 1.5s var(--ease-ceremony) 0.4s forwards;
+}
+@keyframes rule-grow {
+  to { transform: scaleX(1); }
+}
+
+/* ---- Section surfaces ---- */
+.bg-panel {
+  background-color: var(--color-card);
+}
+.bg-band {
+  background: linear-gradient(135deg, #a8480c 0%, var(--color-orange) 55%, #d1701f 100%);
+  color: var(--color-cream);
+}
+
+/* ---- Aurora: golden-hour glow drifting behind the hero ---- */
+.aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.aurora::before,
+.aurora::after {
+  content: "";
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.16;
+  will-change: transform;
+}
+.aurora::before {
+  background: radial-gradient(circle, #f2b26b 0%, transparent 60%);
+  top: -28vmax;
+  left: -14vmax;
+  animation: aurora-a 26s var(--ease-drift) infinite alternate;
+}
+.aurora::after {
+  background: radial-gradient(circle, #e88a8a 0%, transparent 62%);
+  top: -24vmax;
+  right: -18vmax;
+  opacity: 0.12;
+  animation: aurora-b 32s var(--ease-drift) infinite alternate;
+}
+@keyframes aurora-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(9vmax, 6vmax, 0) scale(1.15); }
+}
+@keyframes aurora-b {
+  from { transform: translate3d(0, 0, 0) scale(1.1); }
+  to { transform: translate3d(-8vmax, 5vmax, 0) scale(0.95); }
+}
+
+/* ---- Fine grain — printed-paper texture ---- */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 80;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  animation: grain-shift 9s steps(6) infinite;
+}
+@keyframes grain-shift {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -2%); }
+  80% { transform: translate(3%, 3%); }
+}
+
+/* ---- Hero photo: framed, slow ken-burns breath ---- */
+.photo-frame {
+  overflow: hidden;
+  border-radius: 1.75rem;
+  box-shadow:
+    0 30px 60px -24px rgba(61, 44, 31, 0.35),
+    0 8px 20px -10px rgba(61, 44, 31, 0.2);
+}
+.kenburns {
+  animation: kenburns 34s var(--ease-drift) infinite alternate;
+  will-change: transform;
+}
+@keyframes kenburns {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.07) translateY(-1.5%); }
+}
+
+/* Photo unveils from behind a cream veil */
+.unveil {
+  position: relative;
+}
+.unveil::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-cream);
+  transform-origin: top center;
+  animation: unveil 1.3s var(--ease-ceremony) 1.15s forwards;
+}
+@keyframes unveil {
+  to { transform: scaleY(0); }
+}
+
+/* ---- Skyline motif (light watermark variant lives in component) ---- */
+.skyline {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 190px;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 40%);
+  mask-image: linear-gradient(to bottom, transparent, #000 40%);
+}
+
+.win {
+  animation: win-twinkle 7s ease-in-out infinite;
+}
+@keyframes win-twinkle {
+  0%, 88%, 100% { opacity: 0.7; }
+  93% { opacity: 0.15; }
+}
+.win-on {
+  opacity: 0;
+  animation:
+    win-ignite 0.5s ease forwards,
+    win-twinkle 7s ease-in-out infinite;
+}
+@keyframes win-ignite {
+  from { opacity: 0; }
+  to { opacity: 0.7; }
+}
+.net-pulse {
+  stroke-dasharray: 42 1200;
+  stroke-dashoffset: 1242;
+  animation: net-travel 7.5s linear infinite;
+}
+@keyframes net-travel {
+  to { stroke-dashoffset: 0; }
+}
+.node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-throb 3.6s ease-in-out infinite;
+}
+@keyframes node-throb {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.65; }
+}
+
+/* ---- Hero entrance ceremony ---- */
+.rise {
+  opacity: 0;
+  transform: translateY(34px);
+  animation: rise-in 1.1s var(--ease-ceremony) forwards;
+}
+.rise-blur {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px);
+  animation: rise-blur-in 1.2s var(--ease-ceremony) forwards;
+}
+@keyframes rise-in {
+  to { opacity: 1; transform: none; }
+}
+@keyframes rise-blur-in {
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.08em;
+}
+.mask-line > span {
+  display: block;
+  transform: translateY(112%);
+  animation: mask-up 1.15s var(--ease-ceremony) forwards;
+  animation-delay: inherit;
+}
+@keyframes mask-up {
+  to { transform: translateY(0); }
+}
+
+/* Tagline pill — warm glow to life */
+.pill-glow {
+  position: relative;
+  animation: pill-ignite 2.2s var(--ease-ceremony) 1.6s both;
+}
+@keyframes pill-ignite {
+  0% { box-shadow: 0 0 0 0 rgba(199, 94, 18, 0); opacity: 0; transform: translateY(16px); }
+  55% { box-shadow: 0 0 34px 2px rgba(199, 94, 18, 0.25); }
+  100% { box-shadow: 0 0 18px 0 rgba(199, 94, 18, 0.12); opacity: 1; transform: none; }
+}
+
+/* ---- Reveal on scroll — variants ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.85s var(--ease-ceremony),
+    transform 0.85s var(--ease-ceremony),
+    filter 0.85s var(--ease-ceremony);
+}
+.reveal[data-effect="blur"] {
+  filter: blur(8px);
+}
+.reveal[data-effect="left"] {
+  transform: translateX(-28px);
+}
+.reveal[data-effect="right"] {
+  transform: translateX(28px);
+}
+.reveal[data-effect="scale"] {
+  transform: scale(0.94) translateY(12px);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* ---- CTA shine sweep ---- */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease-ceremony),
+    box-shadow 0.35s var(--ease-ceremony),
+    background-color 0.35s ease,
+    border-color 0.35s ease;
+}
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease-ceremony);
+}
+.btn-shine:hover::after {
+  left: 130%;
+}
+.btn-shine:hover {
+  transform: translateY(-2px);
+}
+.btn-shine:active {
+  transform: translateY(0);
+}
+
+/* ---- Nav underline grows from center ---- */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-orange);
+  transform: translateX(-50%);
+  transition: width 0.35s var(--ease-ceremony);
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  width: 100%;
+}
+
+/* ---- Card lift ---- */
+.card-lift {
+  transition:
+    transform 0.5s var(--ease-ceremony),
+    border-color 0.5s ease,
+    background-color 0.5s ease,
+    box-shadow 0.5s var(--ease-ceremony);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 44px -20px rgba(61, 44, 31, 0.28);
+}
+
+/* ---- Scroll progress hairline ---- */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 100%;
+  z-index: 60;
+  background: linear-gradient(to right, var(--color-rust), var(--color-orange-bright));
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+}
+
+/* ---- Countdown digit roll ---- */
+.digit-roll {
+  display: inline-block;
+  animation: digit-in 0.5s var(--ease-ceremony);
+}
+@keyframes digit-in {
+  from { opacity: 0; transform: translateY(-0.55em); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---- Slow, dignified marquee ---- */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: marquee-roll 46s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-roll {
+  to { transform: translateX(-50%); }
+}
+
+/* ---- Reduced motion: everything settles instantly ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .rise,
+  .rise-blur,
+  .mask-line > span,
+  .pill-glow,
+  .rule-draw,
+  .rule-grow,
+  .digit-roll {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .unveil::after {
+    display: none;
+  }
+  .win,
+  .win-on {
+    opacity: 0.7 !important;
+    animation: none !important;
+  }
+  .net-pulse,
+  .node-pulse,
+  .aurora::before,
+  .aurora::after,
+  .grain::before,
+  .marquee-track,
+  .kenburns {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- Focus visibility (accessibility) ---- */
+:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-cream);
+}

@@ -1,0 +1,14 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.pem
+npm-debug.log*
+.env*
+next-env.d.ts
+
+# Source documents — proposal/agenda PDFs contain confidential terms
+# (CLAUDE.md §8: public repo = event info only). Keep them local.
+*.pdf
+tsconfig.tsbuildinfo
