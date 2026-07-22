@@ -32,19 +32,27 @@ function TierLabel({ children }: { children: string }) {
 const CARD_W =
   "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]";
 
-function MemberRow({ members }: { members: readonly Member[] }) {
+function MemberRow({
+  members,
+  nameOnly = false,
+}: {
+  members: readonly Member[];
+  nameOnly?: boolean;
+}) {
   return (
     <div className="mt-6 flex flex-wrap justify-center gap-5">
       {members.map((m, i) => (
         <Reveal
           key={m.name}
           delay={(i % 3) * 60}
-          className={`card-lift flex min-h-[9.5rem] flex-col items-center justify-center rounded-2xl border border-line bg-card p-6 text-center hover:border-orange/40 ${CARD_W}`}
+          className={`card-lift flex ${nameOnly ? "min-h-[5.5rem]" : "min-h-[9.5rem]"} flex-col items-center justify-center rounded-2xl border border-line bg-card p-6 text-center hover:border-orange/40 ${CARD_W}`}
         >
           <p className="display text-xl text-rust">{m.name}</p>
-          <p className="mt-2 text-sm leading-relaxed text-brown-soft">
-            {m.role}
-          </p>
+          {!nameOnly && (
+            <p className="mt-2 text-sm leading-relaxed text-brown-soft">
+              {m.role}
+            </p>
+          )}
         </Reveal>
       ))}
     </div>
@@ -81,13 +89,13 @@ export default function Committee() {
         <TierLabel>Convener & Co-Convener(s)</TierLabel>
         <MemberRow members={[CONVENER, ...CO_CONVENERS]} />
 
-        {/* Organising Committee */}
-        <TierLabel>Organising Committee — Graphic Era University</TierLabel>
-        <MemberRow members={ORGANISING_COMMITTEE} />
-
         {/* GCCI Leadership */}
         <TierLabel>Organiser (GCCI) Leadership</TierLabel>
         <MemberRow members={GCCI_LEADERSHIP} />
+
+        {/* Organising Committee — members listed by name */}
+        <TierLabel>Organising Committee — Graphic Era University</TierLabel>
+        <MemberRow members={ORGANISING_COMMITTEE} nameOnly />
       </div>
     </section>
   );
