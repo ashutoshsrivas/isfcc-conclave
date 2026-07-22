@@ -12,38 +12,56 @@ import {
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 
+/* Symmetric tier label — centered between two gold rules. */
 function TierLabel({ children }: { children: string }) {
   return (
-    <div className="mt-16 flex items-center gap-5 first:mt-0">
-      <span className="mono-label shrink-0 text-orange">{children}</span>
+    <div className="mt-16 flex items-center gap-5">
+      <span className="gold-rule w-full" aria-hidden />
+      <span className="mono-label shrink-0 text-center text-orange">
+        {children}
+      </span>
       <span className="gold-rule w-full" aria-hidden />
     </div>
   );
 }
 
-function MemberCard({
-  member,
-  delay = 0,
+/* Column widths for a centered, wrapping row (gap-5 = 1.25rem). */
+const COLS = {
+  2: "w-full sm:w-[calc(50%-0.625rem)]",
+  3: "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]",
+  4: "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]",
+} as const;
+
+function MemberRow({
+  members,
+  cols,
   compact = false,
 }: {
-  member: Member;
-  delay?: number;
+  members: readonly Member[];
+  cols: keyof typeof COLS;
   compact?: boolean;
 }) {
   return (
-    <Reveal
-      delay={delay}
-      className="card-lift flex h-full flex-col rounded-2xl border border-line bg-card p-5 hover:border-orange/40"
-    >
-      <p
-        className={`${compact ? "font-semibold text-brown" : "display text-xl text-rust"}`}
-      >
-        {member.name}
-      </p>
-      <p className="mt-1.5 text-sm leading-relaxed text-brown-soft">
-        {member.role}
-      </p>
-    </Reveal>
+    <div className="mt-6 flex flex-wrap justify-center gap-5">
+      {members.map((m, i) => (
+        <Reveal
+          key={m.name}
+          delay={(i % cols) * 60}
+          className={`card-lift flex flex-col items-center rounded-2xl border border-line bg-card p-5 text-center hover:border-orange/40 ${COLS[cols]}`}
+        >
+          <p
+            className={
+              compact ? "font-semibold text-brown" : "display text-xl text-rust"
+            }
+          >
+            {m.name}
+          </p>
+          <p className="mt-1.5 text-sm leading-relaxed text-brown-soft">
+            {m.role}
+          </p>
+        </Reveal>
+      ))}
+    </div>
   );
 }
 
@@ -52,6 +70,7 @@ export default function Committee() {
     <section id="committee" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
+          align="center"
           eyebrow="Organising & Advisory Committee"
           title="The people behind the Conclave."
         />
@@ -85,43 +104,24 @@ export default function Committee() {
 
         {/* Patrons */}
         <TierLabel>Patrons</TierLabel>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {PATRONS.map((m, i) => (
-            <MemberCard key={m.name} member={m} delay={(i % 4) * 60} />
-          ))}
-        </div>
+        <MemberRow members={PATRONS} cols={4} />
 
         {/* Advisory Board */}
         <TierLabel>Advisory Board</TierLabel>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {ADVISORY_BOARD.map((m, i) => (
-            <MemberCard key={m.name} member={m} delay={(i % 3) * 50} compact />
-          ))}
-        </div>
+        <MemberRow members={ADVISORY_BOARD} cols={3} compact />
 
         {/* Convener & Co-Conveners */}
         <TierLabel>Convener & Co-Convener(s)</TierLabel>
-        <div className="mt-6 grid gap-5 sm:grid-cols-3">
-          <MemberCard member={CONVENER} />
-          {CO_CONVENERS.map((m, i) => (
-            <MemberCard key={m.name} member={m} delay={(i + 1) * 70} />
-          ))}
-        </div>
+        <MemberRow members={[CONVENER, ...CO_CONVENERS]} cols={3} />
 
         {/* Organising Committee */}
         <TierLabel>Organising Committee — Graphic Era University</TierLabel>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {ORGANISING_COMMITTEE.map((m, i) => (
-            <MemberCard key={m.name} member={m} delay={(i % 4) * 50} compact />
-          ))}
-        </div>
+        <MemberRow members={ORGANISING_COMMITTEE} cols={4} compact />
 
         {/* GCCI Leadership */}
         <TierLabel>Organiser (GCCI) Leadership</TierLabel>
-        <div className="mx-auto mt-6 grid max-w-3xl gap-5 sm:grid-cols-2">
-          {GCCI_LEADERSHIP.map((m, i) => (
-            <MemberCard key={m.name} member={m} delay={i * 70} />
-          ))}
+        <div className="mx-auto max-w-3xl">
+          <MemberRow members={GCCI_LEADERSHIP} cols={2} />
         </div>
       </div>
     </section>
