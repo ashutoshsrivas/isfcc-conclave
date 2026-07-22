@@ -27,32 +27,43 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.gcci.live"),
-  title: "3rd International Smart & Future Cities Conclave 2026 | Dehradun",
+  title:
+    "3rd International Smart & Future Cities Conclave 2026 | Graphic Era University, Dehradun",
   description:
-    "The 3rd International Smart & Future Cities Conclave (ISFCC) — Intelligent Urban Futures: Technology, Sustainability & Governance. 21–22 August 2026, Graphic Era University, Dehradun. Organised by GCCI, hosted at Graphic Era University.",
+    "Graphic Era (Deemed to be University), Dehradun — NAAC A+ accredited, among India's top 50 universities (NIRF 2025) — hosts the 3rd International Smart & Future Cities Conclave (ISFCC 2026), organised by GCCI. Intelligent Urban Futures: Technology, Sustainability & Governance. 21–22 August 2026.",
+  applicationName: "ISFCC 2026 · Graphic Era University",
+  authors: [
+    { name: "Graphic Era (Deemed to be University), Dehradun" },
+    { name: "Global Chamber of Commerce & Industry (GCCI)" },
+  ],
+  publisher: "Graphic Era (Deemed to be University), Dehradun",
   keywords: [
+    "Graphic Era University",
+    "Graphic Era Deemed to be University",
+    "GEU Dehradun",
     "Smart Cities",
     "Future Cities",
-    "ISFCC",
+    "ISFCC 2026",
     "GCCI",
-    "Graphic Era University",
     "Dehradun",
+    "Uttarakhand",
     "Urban Governance",
     "India Africa",
     "Conclave 2026",
   ],
   openGraph: {
-    title: "3rd International Smart & Future Cities Conclave 2026",
+    title:
+      "3rd International Smart & Future Cities Conclave 2026 — Graphic Era University, Dehradun",
     description:
-      "Intelligent Urban Futures — Technology, Sustainability & Governance. 21–22 August 2026, Graphic Era University, Dehradun.",
+      "Hosted at Graphic Era (Deemed to be University), Dehradun. Intelligent Urban Futures — Technology, Sustainability & Governance. 21–22 August 2026. Organised by GCCI.",
     url: EVENT.url,
-    siteName: "ISFCC 2026",
+    siteName: "ISFCC 2026 · Graphic Era University",
     images: [
       {
         url: "/banners/hero.jpg",
         width: 1920,
         height: 1080,
-        alt: "3rd International Smart & Future Cities Conclave 2026 — smart city skyline",
+        alt: "3rd International Smart & Future Cities Conclave 2026 at Graphic Era University, Dehradun — smart city skyline",
       },
     ],
     locale: "en_IN",
@@ -60,9 +71,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "3rd International Smart & Future Cities Conclave 2026",
+    title:
+      "ISFCC 2026 | Graphic Era University, Dehradun — 21–22 August 2026",
     description:
-      "Intelligent Urban Futures — 21–22 August 2026, Graphic Era University, Dehradun.",
+      "Intelligent Urban Futures — hosted at Graphic Era (Deemed to be University), Dehradun. Organised by GCCI.",
     images: ["/banners/hero.jpg"],
   },
 };
