@@ -32,7 +32,7 @@ const EDITIONS = [
 
 export default function AboutGCCI() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="bg-panel py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-14 lg:grid-cols-[0.85fr_1fr] lg:gap-20">
           <div>
@@ -41,17 +41,20 @@ export default function AboutGCCI() {
               title="A global chamber bridging industry, academia & government."
             />
             <p className="mt-8 text-lg leading-relaxed text-brown/85">
-              The Global Chamber of Commerce &amp; Industry is active across 122
-              countries with 60+ MOUs and ISO certification, working to connect
-              academia, industry and government around shared economic and
-              social goals.
+              The Global Chamber of Commerce &amp; Industry (GCCI), Noida, is a
+              leading international business chamber and global trade-promotion
+              platform — active in 122 countries, holding 60+
+              MOUs/collaborations with international organisations, and
+              ISO-certified. Its mission is to bridge academia, industry, and
+              government for sustainable global growth, driving economic growth
+              through networking, mentoring, and knowledge-sharing.
             </p>
 
             <div className="mt-8 grid grid-cols-3 gap-4">
               {GCCI_FACTS.map((f) => (
                 <div
                   key={f.label}
-                  className="rounded-2xl border border-line bg-card p-5 text-center"
+                  className="rounded-2xl border border-line bg-cream p-5 text-center"
                 >
                   <p className="display text-4xl text-orange">
                     <CountUp value={f.value} />
@@ -76,7 +79,7 @@ export default function AboutGCCI() {
               {EDITIONS.map((e) => (
                 <li key={e.edition} className="relative">
                   <span
-                    className={`absolute -left-[2.15rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-cream ${
+                    className={`absolute -left-[2.15rem] top-1.5 h-3 w-3 rounded-full ring-4 ring-card ${
                       e.current ? "bg-orange" : "bg-brown/25"
                     }`}
                   />
@@ -84,7 +87,7 @@ export default function AboutGCCI() {
                     className={`rounded-2xl border p-5 ${
                       e.current
                         ? "border-orange/40 bg-orange/[0.06]"
-                        : "border-line bg-card"
+                        : "border-line bg-cream"
                     }`}
                   >
                     <div className="flex items-baseline justify-between gap-3">

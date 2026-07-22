@@ -16,9 +16,10 @@ export default function Contact() {
                 Join the conversation on the future city.
               </h2>
               <p className="mt-5 max-w-lg text-lg text-cream/85">
-                Delegations, speakers, partners and press are invited to express
-                interest via the official event page. Seats for the {EVENT.dates}{" "}
-                Conclave are limited.
+                Express interest and register via the official event page.
+                Registration opens 1st August 2026; the last date of
+                registration is 18th August 2026. The Conclave will be held in
+                hybrid mode.
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <a
@@ -94,9 +95,26 @@ export default function Contact() {
                     className="mono-label text-cream/70"
                     style={{ fontSize: "0.6rem" }}
                   >
-                    Signatory
+                    GCCI Signatory
                   </dt>
                   <dd className="mt-1 text-cream">{CONTACT.signatory}</dd>
+                </div>
+                <div>
+                  <dt
+                    className="mono-label text-cream/70"
+                    style={{ fontSize: "0.6rem" }}
+                  >
+                    Host Coordinator (GEU)
+                  </dt>
+                  <dd className="mt-1 text-cream">
+                    {CONTACT.geuCoordinator} ·{" "}
+                    <a
+                      href={`tel:${CONTACT.geuCoordinatorPhone}`}
+                      className="hover:underline underline-offset-4"
+                    >
+                      {CONTACT.geuCoordinatorPhone}
+                    </a>
+                  </dd>
                 </div>
               </dl>
             </div>

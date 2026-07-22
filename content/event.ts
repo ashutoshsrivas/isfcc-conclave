@@ -1,4 +1,5 @@
-// Single source of truth — all facts from CLAUDE.md §2, §8. Do not invent data.
+// Single source of truth — facts from CLAUDE.md §2/§8 and the official
+// ISFCC 2026 Brochure. Do not invent data.
 
 export const EVENT = {
   name: "3rd International Smart & Future Cities Conclave",
@@ -15,6 +16,9 @@ export const EVENT = {
   venue: "Graphic Era University",
   venueFull: "Graphic Era University (GEU), Dehradun",
   venueLocation: "Dehradun, Uttarakhand, India",
+  // Full address — from the brochure ("Venue Address")
+  venueAddress:
+    "Graphic Era (Deemed to be University), Bell Road, Clement Town, Dehradun, Uttarakhand, India – 248002",
   organiser: "Global Chamber of Commerce & Industry (GCCI)",
   organiserShort: "GCCI",
   organiserCity: "Noida",
@@ -25,8 +29,8 @@ export const EVENT = {
 
 export const STATS = [
   { value: "500+", label: "Delegates", detail: "over two days" },
-  { value: "10+", label: "Countries", detail: "offline & online" },
-  { value: "27", label: "African Nations", detail: "invited delegations" },
+  { value: "10+", label: "Countries", detail: "hybrid mode" },
+  { value: "27", label: "African Nations", detail: "invited via Ambassadors / High Commissioners" },
 ] as const;
 
 export const CONTACT = {
@@ -34,8 +38,10 @@ export const CONTACT = {
   address:
     "GCCI House, M-5/2, Sector-49, Noida, Gautam Budh Nagar, U.P., India",
   emails: ["info@gcci.live", "ceo@gcci.live"],
-  // GEU event coordinator — from the official creative
+  // GEU event coordinator — from the official creative & brochure
   geuEmail: "ajaykumarpandey.mgt@geu.ac.in",
+  geuCoordinator: "Dr. Ajay Pandey, Convener",
+  geuCoordinatorPhone: "9911814222",
   phones: ["0120-4010312", "+91 99715 50557", "+91 94114005521"],
   signatory: "Er. Aashish Gupta, Co-Founder & CEO, GCCI",
   eventPage:
@@ -46,10 +52,11 @@ export const CONTACT = {
 
 export const NAV = [
   { label: "About", href: "#about" },
-  { label: "Tracks", href: "#tracks" },
+  { label: "Themes", href: "#tracks" },
   { label: "Agenda", href: "#agenda" },
+  { label: "Speakers", href: "#speakers" },
   { label: "Delegations", href: "#delegations" },
-  { label: "Partners", href: "#partners" },
+  { label: "Registration", href: "#registration" },
   { label: "Venue", href: "#venue" },
   { label: "Contact", href: "#contact" },
 ] as const;

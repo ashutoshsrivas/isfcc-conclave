@@ -4,10 +4,13 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Tracks from "@/components/sections/Tracks";
 import Agenda from "@/components/sections/Agenda";
+import Speakers from "@/components/sections/Speakers";
 import WhoAttends from "@/components/sections/WhoAttends";
 import Delegations from "@/components/sections/Delegations";
+import Registration from "@/components/sections/Registration";
 import Partners from "@/components/sections/Partners";
 import AboutGCCI from "@/components/sections/AboutGCCI";
+import Committee from "@/components/sections/Committee";
 import Venue from "@/components/sections/Venue";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
@@ -53,10 +56,13 @@ export default function Home() {
         <About />
         <Tracks />
         <Agenda />
+        <Speakers />
         <WhoAttends />
         <Delegations />
+        <Registration />
         <Partners />
         <AboutGCCI />
+        <Committee />
         <Venue />
         <Contact />
       </main>

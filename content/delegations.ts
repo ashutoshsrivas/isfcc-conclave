@@ -32,5 +32,6 @@ export const DELEGATIONS = [
   { country: "Zimbabwe", envoy: "H.E. Stella Nkomo" },
 ] as const;
 
+// Verbatim from the ISFCC 2026 Brochure.
 export const DELEGATIONS_DISCLAIMER =
-  "Participation is subject to confirmation via diplomatic channels and may change.";
+  "All country representations, ambassadorial participation, and ministerial delegations are based on diplomatic outreach and are subject to confirmation through formal diplomatic channels; final participation may change.";

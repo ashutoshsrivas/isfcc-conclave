@@ -15,23 +15,26 @@ export default function About() {
             />
             <div className="mt-8 space-y-6 text-lg leading-relaxed text-brown/85">
               <Reveal as="p">
-                The International Smart &amp; Future Cities Conclave convenes
-                diplomats, senior government officials, global industry leaders
-                and academia to shape smart, sustainable and inclusive urban
-                ecosystems. Now in its third edition, the Conclave brings the
-                world&apos;s conversation on future cities to Dehradun.
+                The 3rd International Smart &amp; Future Cities Conclave (ISFCC)
+                convenes diplomats from embassies, senior government officials,
+                global industry leaders, academic institutions, urban planners,
+                researchers, technology innovators, start-ups, and development
+                organisations from India and abroad to shape the future of
+                smart urban ecosystems.
               </Reveal>
               <Reveal as="p" delay={80}>
-                Across two days, delegates move between high-level plenaries,
-                sector roundtables, student challenges and a dedicated
-                diplomatic conclave — building the partnerships, memoranda and
-                ideas that translate ambition into implementation on the ground.
+                Expected to attract 500+ delegates over two days with
+                representation from 10+ countries, this edition places special
+                emphasis on the India–Africa economic partnership, with 27
+                African nations invited through their Ambassadors / High
+                Commissioners.
               </Reveal>
               <Reveal as="p" delay={160}>
-                Focus themes this edition span digital diplomacy, renewable
-                energy, infrastructure, education, agriculture, healthcare and
-                MSME exchange — with a distinctive India–Africa partnership at
-                its heart.
+                Focus areas this edition include digital diplomacy, renewable
+                energy, infrastructure, education, agriculture, healthcare, and
+                MSME exchange — delivered through keynote addresses, sector
+                conclaves, roundtables, B2B/B2G matchmaking, student
+                initiatives, and the execution of MoUs and joint ventures.
               </Reveal>
             </div>
           </div>
@@ -59,9 +62,10 @@ export default function About() {
               ))}
             </div>
             <p className="text-sm leading-relaxed text-brown-soft">
-              Delegates span Industry, Government, Academia, Diplomats and
-              Start-ups — with ambassadors, ministers, vice-chancellors,
-              industry CEOs, founders and students in the room together.
+              Diplomats from embassies, senior government officials, global
+              industry leaders, academic institutions, urban planners,
+              researchers, technology innovators, start-ups, and development
+              organisations — from India and abroad.
             </p>
           </Reveal>
         </div>

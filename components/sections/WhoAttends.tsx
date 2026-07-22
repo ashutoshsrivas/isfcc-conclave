@@ -2,18 +2,19 @@ import CountUp from "../CountUp";
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 
+// Delegate groups — verbatim from the brochure's Conclave Overview.
 const AUDIENCE = [
-  { title: "Diplomats", note: "Ambassadors & High Commissioners" },
-  { title: "Government", note: "Ministers & senior officials" },
-  { title: "Academia", note: "Vice-chancellors & researchers" },
-  { title: "Industry", note: "Global CEOs & sector leaders" },
-  { title: "Start-ups", note: "Founders & innovators" },
-  { title: "Students", note: "Youth changemakers" },
+  { title: "Diplomats", note: "From embassies — Ambassadors / High Commissioners" },
+  { title: "Government", note: "Senior government officials" },
+  { title: "Industry", note: "Global industry leaders" },
+  { title: "Academia", note: "Academic institutions, urban planners & researchers" },
+  { title: "Start-ups", note: "Technology innovators & start-ups" },
+  { title: "Development", note: "Development organisations, India & abroad" },
 ];
 
 const NUMBERS = [
   { value: "500+", label: "Delegates over two days" },
-  { value: "10+", label: "Countries, offline & online" },
+  { value: "10+", label: "Countries represented" },
   { value: "27", label: "African nations invited" },
 ];
 

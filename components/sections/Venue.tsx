@@ -15,7 +15,7 @@ export default function Venue() {
             <SectionHeading
               eyebrow="Venue"
               title="Graphic Era University, Dehradun."
-              intro="The Conclave is hosted on the Graphic Era University campus in Dehradun — the gateway to Uttarakhand, in the Himalayan foothills of northern India."
+              intro="The Conclave is hosted at the Graphic Era University Campus, Dehradun, Uttarakhand, India — the Host and Knowledge & Venue Partner."
             />
             <dl className="mt-8 space-y-4">
               <div className="flex gap-4">
@@ -26,18 +26,9 @@ export default function Venue() {
               </div>
               <div className="flex gap-4">
                 <dt className="mono-label w-24 shrink-0 pt-1 text-sky">
-                  Location
+                  Address
                 </dt>
-                <dd className="text-brown">{EVENT.venueLocation}</dd>
-              </div>
-              <div className="flex gap-4">
-                <dt className="mono-label w-24 shrink-0 pt-1 text-sky">
-                  Travel
-                </dt>
-                <dd className="text-brown-soft">
-                  Served by Jolly Grant Airport (DED) and Dehradun Railway
-                  Station, with regular connections from Delhi and major cities.
-                </dd>
+                <dd className="text-brown-soft">{EVENT.venueAddress}</dd>
               </div>
             </dl>
             <a
