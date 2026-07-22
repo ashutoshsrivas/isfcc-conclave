@@ -25,38 +25,24 @@ function TierLabel({ children }: { children: string }) {
   );
 }
 
-/* Column widths for a centered, wrapping row (gap-5 = 1.25rem). */
-const COLS = {
-  2: "w-full sm:w-[calc(50%-0.625rem)]",
-  3: "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]",
-  4: "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]",
-} as const;
+/*
+ * One card size, one type scale, for every tier. Rows wrap and centre
+ * themselves, so incomplete rows stay on the section's axis.
+ */
+const CARD_W =
+  "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]";
 
-function MemberRow({
-  members,
-  cols,
-  compact = false,
-}: {
-  members: readonly Member[];
-  cols: keyof typeof COLS;
-  compact?: boolean;
-}) {
+function MemberRow({ members }: { members: readonly Member[] }) {
   return (
     <div className="mt-6 flex flex-wrap justify-center gap-5">
       {members.map((m, i) => (
         <Reveal
           key={m.name}
-          delay={(i % cols) * 60}
-          className={`card-lift flex flex-col items-center rounded-2xl border border-line bg-card p-5 text-center hover:border-orange/40 ${COLS[cols]}`}
+          delay={(i % 3) * 60}
+          className={`card-lift flex min-h-[9.5rem] flex-col items-center justify-center rounded-2xl border border-line bg-card p-6 text-center hover:border-orange/40 ${CARD_W}`}
         >
-          <p
-            className={
-              compact ? "font-semibold text-brown" : "display text-xl text-rust"
-            }
-          >
-            {m.name}
-          </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-brown-soft">
+          <p className="display text-xl text-rust">{m.name}</p>
+          <p className="mt-2 text-sm leading-relaxed text-brown-soft">
             {m.role}
           </p>
         </Reveal>
@@ -95,34 +81,27 @@ export default function Committee() {
 
         {/* Mentor */}
         <TierLabel>Mentor</TierLabel>
-        <Reveal className="mt-6">
-          <div className="mx-auto max-w-2xl rounded-3xl border border-line bg-card p-8 text-center">
-            <p className="display text-2xl text-rust">{MENTOR.name}</p>
-            <p className="mt-2 text-brown-soft">{MENTOR.role}</p>
-          </div>
-        </Reveal>
+        <MemberRow members={[MENTOR]} />
 
         {/* Patrons */}
         <TierLabel>Patrons</TierLabel>
-        <MemberRow members={PATRONS} cols={4} />
+        <MemberRow members={PATRONS} />
 
         {/* Advisory Board */}
         <TierLabel>Advisory Board</TierLabel>
-        <MemberRow members={ADVISORY_BOARD} cols={3} compact />
+        <MemberRow members={ADVISORY_BOARD} />
 
         {/* Convener & Co-Conveners */}
         <TierLabel>Convener & Co-Convener(s)</TierLabel>
-        <MemberRow members={[CONVENER, ...CO_CONVENERS]} cols={3} />
+        <MemberRow members={[CONVENER, ...CO_CONVENERS]} />
 
         {/* Organising Committee */}
         <TierLabel>Organising Committee — Graphic Era University</TierLabel>
-        <MemberRow members={ORGANISING_COMMITTEE} cols={4} compact />
+        <MemberRow members={ORGANISING_COMMITTEE} />
 
         {/* GCCI Leadership */}
         <TierLabel>Organiser (GCCI) Leadership</TierLabel>
-        <div className="mx-auto max-w-3xl">
-          <MemberRow members={GCCI_LEADERSHIP} cols={2} />
-        </div>
+        <MemberRow members={GCCI_LEADERSHIP} />
       </div>
     </section>
   );
