@@ -61,23 +61,9 @@ export default function Committee() {
           title="The people behind the Conclave."
         />
 
-        {/* Chief Patron — the seat of honour */}
-        <Reveal className="mt-14">
-          <div className="rounded-[2rem] border border-orange/30 bg-card p-10 text-center shadow-xl shadow-brown/5 sm:p-14">
-            <p className="mono-label text-orange">Chief Patron</p>
-            <p className="display mt-5 text-3xl text-rust sm:text-4xl md:text-5xl">
-              {CHIEF_PATRON.name}
-            </p>
-            <p className="mx-auto mt-3 max-w-xl text-lg text-brown-soft sm:text-xl">
-              {CHIEF_PATRON.role}
-            </p>
-            <span
-              className="mx-auto mt-6 block h-px w-24 bg-amber"
-              aria-hidden
-              style={{ opacity: 0.9 }}
-            />
-          </div>
-        </Reveal>
+        {/* Chief Patron — first in order */}
+        <TierLabel>Chief Patron</TierLabel>
+        <MemberRow members={[CHIEF_PATRON]} />
 
         {/* Mentor */}
         <TierLabel>Mentor</TierLabel>
