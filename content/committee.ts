@@ -11,7 +11,7 @@ export const CHIEF_PATRON: Member = {
 
 export const MENTOR: Member = {
   name: "Mr. Tejasvi Ghanshala",
-  role: "Chief Technology Officer, Graphic Era Group of Institutions",
+  role: "Executive Director (Project Based Learning & Global Outreach), Graphic Era Group of Institutions",
 };
 
 export const PATRONS: Member[] = [

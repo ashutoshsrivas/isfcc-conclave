@@ -1,5 +1,6 @@
 import { EVENT } from "@/content/event";
 import {
+  CMT_ACKNOWLEDGEMENT,
   FEES,
   HYBRID_NOTE,
   IMPORTANT_DATES,
@@ -129,6 +130,16 @@ export default function Registration() {
               <span className="font-medium text-brown">{PAYMENT.micr}</span>
             </p>
           </div>
+        </Reveal>
+
+        {/* Peer-review acknowledgement — exact required wording */}
+        <Reveal className="mt-8 flex items-start gap-3 rounded-2xl border border-line bg-cream p-5">
+          <span className="mono-label mt-0.5 shrink-0 text-orange">
+            Peer Review
+          </span>
+          <p className="text-sm leading-relaxed text-brown-soft">
+            {CMT_ACKNOWLEDGEMENT}
+          </p>
         </Reveal>
       </div>
     </section>

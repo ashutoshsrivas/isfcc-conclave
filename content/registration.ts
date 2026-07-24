@@ -36,6 +36,10 @@ export const SPONSORSHIP = [
   { tier: "Silver Sponsor", cost: "INR 25,000/-" },
 ] as const;
 
+// Required acknowledgement — exact text, must be displayed on the website.
+export const CMT_ACKNOWLEDGEMENT =
+  "The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.";
+
 export const PAYMENT = {
   beneficiary: "Graphic Era Deemed to be University R & D",
   bank: "Axis Bank Ltd., Saharanpur Road, Dehradun",
